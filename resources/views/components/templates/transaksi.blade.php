@@ -8,39 +8,172 @@
 @endsection
 
 @section('content')
-    <div class="ms-4">
-        <h1 class="fs-1 text-gray mt-3">Transaksi</h1>
+    <div class="ms-3 me-3">
         <div class="mt-4 card shadow mb-3 w-100 data-table-containe p-4">
             <div class="d-flex justify-content-end align-items-end mb-3">
-                <button class="btn btn-primary"><i class="bi bi-plus-circle me-2"></i>Tambah Pemesanan</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTransaksiModal">
+                    <i class="bi bi-plus-circle me-2"></i>Tambah Pemesanan
+                </button>
             </div>
-            <table id="myTable" class="table table-striped data-table display w-100">
-                <thead>
-                    <tr>
-                        <th>Id Transaksi</th>
-                        <th>Nama Customer</th>
-                        <th>Nama Barang</th>
-                        <th>Jumlah</th>
-                        <th>Gramasi</th>
-                        <th>Status</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>John Doe</td>
-                        <td>Scuba</td>
-                        <td>100</td>
-                        <td>70</td>
-                        <td>Diproses</td>
-                        <td><i class="bi bi-pencil-square me-2"></i><i class="bi bi-trash3-fill me-2"></i><i
-                                class="bi bi-eye-fill"></i></td>
-                    </tr>
-                </tbody>
-            </table>
+
+            <div class="data-table-container">
+                <table id="myTable" class="table table-striped table-hover data-table display w-100">
+                    <thead>
+                        <tr>
+                            <th class="text-start">Id Transaksi</th>
+                            <th class="text-start">Nama Customer</th>
+                            <th class="text-start">Nama Barang</th>
+                            <th class="text-start">Jumlah</th>
+                            <th class="text-start">Gramasi</th>
+                            <th class="text-start">Status</th>
+                            <th class="text-center">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-start">1</td>
+                            <td class="text-start">John Doe</td>
+                            <td class="text-start">Scuba</td>
+                            <td class="text-start">100</td>
+                            <td class="text-start">70</td>
+                            <td class="text-start">
+                                <div class="bg-primary text-white w-auto radius d-inline-flex p-2">
+                                    Selesai
+                                </div>
+
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-center align-items-center">
+                                    {{-- edit --}}
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#editTransaksiModal"
+                                        class="btn pt-0 pb-0 pe-0 ps-0 m-0"><i
+                                            class="bi bi-pencil-square ps-2 me-2"></i></button>
+                                    {{-- haous --}}
+                                    <a href="#" class="btn pt-0 pb-0 pe-0 ps-0 m-0"><i
+                                            class="bi bi-trash3-fill ps-2 me-2"></i></a>
+                                    {{-- detail --}}
+                                    <button type="button" class="btn pt-0 pb-0 pe-0 ps-0 m-0"><i
+                                            class="bi bi-eye-fill ps-2 me-2"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+    {{-- modal add --}}
+    <div class="modal fade" id="addTransaksiModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="addTransaksiModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="" method="POST">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="addTransaksiModalLabel">Input Data Pemesanan</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="nameInput" class="form-label">Nama</label>
+                            <input type="text" class="form-control" id="nameInput" name="nameInput">
+                        </div>
+                        <div class="mb-3">
+                            <label for="dateInput" class="form-label">Tanggal</label>
+                            <input type="date" class="form-control" id="dateInput" name="dateInput">
+                        </div>
+                        <div class="mb-3">
+                            <label for="addressInput" class="form-label">Alamat</label>
+                            <input type="text" class="form-control" id="addressInput" name="addressInput">
+                        </div>
+                        <div class="mb-3 row">
+                            <div class="col-lg-6">
+                                <label for="productNameInput" class="form-label">Nama Barang</label>
+                                <input type="text" class="form-control" id="productNameInput" name="productNameInput">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="colorInput" class="form-label">Warna</label>
+                                <input type="text" class="form-control" id="colorInput" name="colorInput">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="gramasiInput" class="form-label">Gramasi</label>
+                            <input type="text" class="form-control" id="gramasiInput" name="gramasiInput">
+                        </div>
+                        <div class="mb-3">
+                            <label for="jumlahInput" class="form-label">Jumlah</label>
+                            <input type="text" class="form-control" id="jumlahInput" name="jumlahInput">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{-- end modal add --}}
+    {{-- modal Edit --}}
+    <div class="modal fade" id="editTransaksiModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="editTransaksiModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="" method="POST">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="editTransaksiModalLabel">Edit Data Pemesanan</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="nameInput" class="form-label">Nama</label>
+                            <input type="text" class="form-control" id="nameInput" name="nameInput">
+                        </div>
+                        <div class="mb-3">
+                            <label for="dateInput" class="form-label">Tanggal</label>
+                            <input type="date" class="form-control" id="dateInput" name="dateInput">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editressInput" class="form-label">Alamat</label>
+                            <input type="text" class="form-control" id="editressInput" name="editressInput">
+                        </div>
+                        <div class="mb-3 row">
+                            <div class="col-lg-6">
+                                <label for="productNameInput" class="form-label">Nama Barang</label>
+                                <input type="text" class="form-control" id="productNameInput"
+                                    name="productNameInput">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="colorInput" class="form-label">Warna</label>
+                                <input type="text" class="form-control" id="colorInput" name="colorInput">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="gramasiInput" class="form-label">Gramasi</label>
+                            <input type="text" class="form-control" id="gramasiInput" name="gramasiInput">
+                        </div>
+                        <div class="mb-3">
+                            <label for="statusInput" class="form-label">Status</label>
+                            <select class="form-select" name="statusInput" id="statusInput" aria-label="Default select example">
+                                <option selected disabled>==Pilih Status==</option>
+                                <option value="1">Diproses</option>
+                                <option value="2">Dikirim</option>
+                                <option value="3">Selesai</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="jumlahInput" class="form-label">Jumlah</label>
+                            <input type="text" class="form-control" id="jumlahInput" name="jumlahInput">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{-- end modal edit --}}
 @endsection
 
 @section('scriptPage')
