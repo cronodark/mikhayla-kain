@@ -15,8 +15,11 @@ return new class extends Migration
             $table->id();
             $table->date('tanggal');
             $table->foreignId('id_customer');
-            $table->string('nopol');
+            $table->string('nama_barang');
+            $table->string('jumlah');
             $table->integer('gramasi');
+            $table->integer('status')->nullable();
+            $table->string('nopol');
             $table->timestamps();
 
             $table->foreign('id_customer')

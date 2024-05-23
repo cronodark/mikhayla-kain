@@ -9,10 +9,11 @@
 
 @section('content')
     <div class="ms-3 me-3">
+        <h1 class="fs-1 text-gray mt-3">Transaksi</h1>
         <div class="mt-4 card shadow mb-3 w-100 data-table-containe p-4">
             <div class="d-flex justify-content-end align-items-end mb-3">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTransaksiModal">
-                    <i class="bi bi-plus-circle me-2"></i>Tambah Pemesanan
+                    <i class="bi bi-plus-circle me-2"></i>Tambah Transaksi
                 </button>
             </div>
 
@@ -20,27 +21,29 @@
                 <table id="myTable" class="table table-striped table-hover data-table display w-100">
                     <thead>
                         <tr>
-                            <th class="text-start">Id Transaksi</th>
+                            <th class="text-start">No</th>
+                            <th class="text-start">Id</th>
                             <th class="text-start">Nama Customer</th>
                             <th class="text-start">Nama Barang</th>
                             <th class="text-start">Jumlah</th>
                             <th class="text-start">Gramasi</th>
                             <th class="text-start">Status</th>
+                            <th class="text-start">Plat Nomor</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td class="text-start">1</td>
+                            <td class="text-start">1</td>
                             <td class="text-start">John Doe</td>
                             <td class="text-start">Scuba</td>
                             <td class="text-start">100</td>
                             <td class="text-start">70</td>
                             <td class="text-start">
-                                <div class="bg-primary text-white w-auto radius d-inline-flex p-2">
+                                <div class="bg-primary text-white w-auto radius d-inline-flex p-1">
                                     Selesai
                                 </div>
-
                             </td>
                             <td>
                                 <div class="d-flex justify-content-center align-items-center">
@@ -69,21 +72,23 @@
             <div class="modal-content">
                 <form action="" method="POST">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="addTransaksiModalLabel">Input Data Pemesanan</h1>
+                        <h1 class="modal-title fs-5" id="addTransaksiModalLabel">Input Data Transaksi</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="nameInput" class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="nameInput" name="nameInput">
+                            <label for="inputCustomer" class="form-label">Customer</label>
+                            <select class="form-select" name="inputCustomer" id="inputCustomer"
+                                aria-label="Default select example">
+                                <option selected disabled>==Pilih Status==</option>
+                                <option value="1">Jane doe</option>
+                                <option value="2">John doe</option>
+                                <option value="3">Asep</option>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="dateInput" class="form-label">Tanggal</label>
                             <input type="date" class="form-control" id="dateInput" name="dateInput">
-                        </div>
-                        <div class="mb-3">
-                            <label for="addressInput" class="form-label">Alamat</label>
-                            <input type="text" class="form-control" id="addressInput" name="addressInput">
                         </div>
                         <div class="mb-3 row">
                             <div class="col-lg-6">
@@ -125,16 +130,18 @@
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="nameInput" class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="nameInput" name="nameInput">
+                            <label for="inputCustomer" class="form-label">Customer</label>
+                            <select class="form-select" name="inputCustomer" id="inputCustomer"
+                                aria-label="Default select example">
+                                <option selected disabled>==Pilih Status==</option>
+                                <option value="1">Jane doe</option>
+                                <option value="2">John doe</option>
+                                <option value="3">Asep</option>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="dateInput" class="form-label">Tanggal</label>
                             <input type="date" class="form-control" id="dateInput" name="dateInput">
-                        </div>
-                        <div class="mb-3">
-                            <label for="editressInput" class="form-label">Alamat</label>
-                            <input type="text" class="form-control" id="editressInput" name="editressInput">
                         </div>
                         <div class="mb-3 row">
                             <div class="col-lg-6">
@@ -153,7 +160,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="statusInput" class="form-label">Status</label>
-                            <select class="form-select" name="statusInput" id="statusInput" aria-label="Default select example">
+                            <select class="form-select" name="statusInput" id="statusInput"
+                                aria-label="Default select example">
                                 <option selected disabled>==Pilih Status==</option>
                                 <option value="1">Diproses</option>
                                 <option value="2">Dikirim</option>
