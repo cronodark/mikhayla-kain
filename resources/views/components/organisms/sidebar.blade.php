@@ -16,6 +16,13 @@
                     </a>
                 </div>
             </li>
+            <li class="nav-item w-100">
+                <div class="{{ Route::currentRouteName() == 'customer.index' ? 'active' : '' }} font-weight-bold ps-3">
+                    <a href="{{ route('customer.index') }}" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi bi-people-fill text-white me-3"></i> <span class="d-none d-sm-inline text-white fs-5">Data Customer</span>
+                    </a>
+                </div>
+            </li>
         </ul>
         <hr>
     </div>

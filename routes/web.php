@@ -9,3 +9,7 @@ Route::get('/', function () {
 Route::get('/transaksi', function () {
     return view('components.templates.transaksi');
 })->name('transaksi.index');
+
+Route::get('/customer', function () {
+    return view('components.templates.customer');
+})->name('customer.index');
