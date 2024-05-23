@@ -46,6 +46,9 @@
                                 </div>
                             </td>
                             <td>
+                                D 1CK  BGR
+                            </td>
+                            <td>
                                 <div class="d-flex justify-content-center align-items-center">
                                     {{-- edit --}}
                                     <button type="button" data-bs-toggle="modal" data-bs-target="#editTransaksiModal"
