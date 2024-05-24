@@ -10,13 +10,14 @@ class Transaction extends Model
     use HasFactory;
     protected $table = 'transactions';
     protected $fillable = [
-        'tanggal',
+        'date',
         'id_customer',
-        'nama_barang',
-        'jumlah',
+        'prodcut_name',
+        'color',
+        'quantity',
         'gramasi',
         'status', // 1 = diproses, 2 = dikirim, 3 = selesai
-        'nopol',
+        'nopol'
     ];
 
     public function customer(){

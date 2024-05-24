@@ -24,10 +24,11 @@ class TransactionsSeeder extends Seeder
             $updatedAt = Carbon::today()->toDateString();
 
             Transaction::insert([
-                'tanggal' => $createdAt,
+                'date' => $createdAt,
                 'id_customer' => $faker->randomElement($customerIds),
-                'nama_barang' => $faker->randomElement(['Scuba', 'Spandex']),
-                'jumlah' => $faker->numberBetween(10,2000),
+                'product_name' => $faker->randomElement(['Scuba', 'Spandex']),
+                'color' => $faker->randomElement(['Putih', 'Hitam', 'Abu']),
+                'quantity' => $faker->numberBetween(10,2000),
                 'gramasi' => $faker->numberBetween(50,70),
                 'status' => $faker->numberBetween(1,3),
                 'nopol' => $this->generateRandomLicensePlate($faker),
