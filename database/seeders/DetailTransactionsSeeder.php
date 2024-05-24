@@ -2,13 +2,14 @@
 
 namespace Database\Seeders;
 
-use App\Models\Customer;
+use App\Models\DetailTransaction;
+use App\Models\Transaction;
 use Carbon\Carbon;
 use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class CustomerSeeder extends Seeder
+class DetailTransactionsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,17 +17,16 @@ class CustomerSeeder extends Seeder
     public function run(): void
     {
         $faker = Factory::create('id_ID');
-
-        for ($i = 0; $i < 5; $i++) {
+        $transactionIds = Transaction::pluck('id')->toArray();
+        for ($i = 0; $i < 150; $i++) {
             $createdAt = Carbon::today()->toDateString();
             $updatedAt = Carbon::today()->toDateString();
 
-            $customer = Customer::insert([
-                'name' => $faker->name,
-                'phone_number' => $faker->phoneNumber,
-                'address' => $faker->address,
+            DetailTransaction::insert([
+                'weight' => $faker->randomFloat(2, 25, 30),
+                'id_transaction' => $faker->randomElement($transactionIds),
                 'created_at' => $createdAt,
-                'updated_at' => $updatedAt
+                'updated_at' => $updatedAt,
             ]);
         }
     }

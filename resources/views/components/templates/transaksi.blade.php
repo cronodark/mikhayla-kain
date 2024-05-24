@@ -46,7 +46,7 @@
                                 </div>
                             </td>
                             <td>
-                                D 1CK  BGR
+                                D 4554 BGR
                             </td>
                             <td>
                                 <div class="d-flex justify-content-center align-items-center">
