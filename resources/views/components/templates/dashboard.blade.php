@@ -29,7 +29,7 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-12">
-                                <h1>1,222</h1>
+                                <h1>{{ $totalTransactions }}</h1>
                             </div>
                             <div class="col-12">
                                 <span class="fs-3 text-secondary">Jumlah</span>
@@ -64,7 +64,7 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-12">
-                                <h1>1,222</h1>
+                                <h1>{{ $onProceedTransactions }}</h1>
                             </div>
                             <div class="col-12">
                                 <span class="fs-3 text-secondary">Transaksi Sedang</span>
@@ -99,7 +99,7 @@
                         </h5>
                         <div class="row mb-3">
                             <div class="col-12">
-                                <h1>1,222</h1>
+                            <h1>{{ $finishedTransactions }}</h1>
                             </div>
                             <div class="col-12">
                                 <span class="fs-3 text-secondary">Transaksi</span>

@@ -15,7 +15,7 @@ class Transaction extends Model
         'nama_barang',
         'jumlah',
         'gramasi',
-        'status',
+        'status', // 1 = diproses, 2 = dikirim, 3 = selesai
         'nopol',
     ];
 
