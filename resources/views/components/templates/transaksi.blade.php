@@ -69,7 +69,8 @@
                                             class="btn pt-0 pb-0 pe-0 ps-0 m-0"><i
                                                 class="bi bi-pencil-square ps-2 me-2"></i></button>
                                         {{-- haous --}}
-                                        <a href="{{ route('transaksi.delete',  $transaction->id) }}" class="btn pt-0 pb-0 pe-0 ps-0 m-0"><i
+                                        <a href="{{ route('transaksi.delete', $transaction->id) }}"
+                                            class="btn pt-0 pb-0 pe-0 ps-0 m-0"><i
                                                 class="bi bi-trash3-fill ps-2 me-2"></i></a>
                                         {{-- detail --}}
                                         <button type="button" class="btn pt-0 pb-0 pe-0 ps-0 m-0"><i
@@ -94,34 +95,36 @@
                                             <div class="modal-body">
                                                 <div class="mb-3">
                                                     <label for="dateInput" class="form-label">Tanggal</label>
-                                                    <input type="date" class="form-control" value="{{ $transaction->date }}" id="dateInput"
-                                                        name="dateInput">
+                                                    <input type="date" class="form-control"
+                                                        value="{{ $transaction->date }}" id="dateInput" name="dateInput">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="inputCustomer" class="form-label">Customer</label>
                                                     <select class="form-select" name="inputCustomer" id="inputCustomer"
                                                         aria-label="Default select example">
-                                                        <option selected disabled>==Pilih Status==</option>
-                                                        <option value="1">Jane doe</option>
-                                                        <option value="2">John doe</option>
-                                                        <option value="3">Asep</option>
+                                                        @foreach ($customers as $customer)
+                                                            <option value="{{ $customer->id }}" {{ $transaction->id_customer == $customer->id ? 'selected' : '' }}>{{ $customer->name }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                                 <div class="mb-3 row">
                                                     <div class="col-lg-6">
                                                         <label for="productNameInput" class="form-label">Nama Barang</label>
-                                                        <input type="text" value="{{ $transaction->product_name }}" class="form-control" id="productNameInput"
+                                                        <input type="text" value="{{ $transaction->product_name }}"
+                                                            class="form-control" id="productNameInput"
                                                             name="productNameInput">
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <label for="colorInput" class="form-label">Warna</label>
-                                                        <input type="text" class="form-control" value="{{ $transaction->color }}" id="colorInput"
+                                                        <input type="text" class="form-control"
+                                                            value="{{ $transaction->color }}" id="colorInput"
                                                             name="colorInput">
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="gramasiInput" class="form-label">Gramasi</label>
-                                                    <input type="text" class="form-control" value="{{ $transaction->gramasi }}"  id="gramasiInput"
+                                                    <input type="text" class="form-control"
+                                                        value="{{ $transaction->gramasi }}" id="gramasiInput"
                                                         name="gramasiInput">
                                                 </div>
                                                 <div class="mb-3">
@@ -129,15 +132,22 @@
                                                     <select class="form-select" name="statusInput" id="statusInput"
                                                         aria-label="Default select example">
                                                         <option selected disabled>==Pilih Status==</option>
-                                                        <option value="1">Diproses</option>
-                                                        <option value="2">Dikirim</option>
-                                                        <option value="3">Selesai</option>
+                                                        <option value="1" {{ $transaction->status == 1 ? 'selected' : '' }} >Diproses</option>
+                                                        <option value="2" {{ $transaction->status == 2 ? 'selected' : '' }}>Dikirim</option>
+                                                        <option value="3" {{ $transaction->status == 3 ? 'selected' : '' }}>Selesai</option>
                                                     </select>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="jumlahInput" class="form-label">Jumlah</label>
-                                                    <input type="text" class="form-control" value="{{ $transaction->quantity }}" id="jumlahInput"
-                                                        name="jumlahInput">
+                                                    <label for="quantityInput" class="form-label">Jumlah</label>
+                                                    <input type="text" class="form-control"
+                                                        value="{{ $transaction->quantity }}" id="quantityInput"
+                                                        name="quantityInput">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="nopolInput" class="form-label">Jumlah</label>
+                                                    <input type="text" class="form-control"
+                                                        value="{{ $transaction->nopol }}" id="nopolInput"
+                                                        name="nopolInput">
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -172,10 +182,10 @@
                             <label for="inputCustomer" class="form-label">Customer</label>
                             <select class="form-select" name="inputCustomer" id="inputCustomer"
                                 aria-label="Default select example">
-                                <option selected disabled>==Pilih Status==</option>
-                                <option value="1">Jane doe</option>
-                                <option value="2">John doe</option>
-                                <option value="3">Asep</option>
+                                <option selected disabled>==Pilih Customer==</option>
+                                @foreach ($customers as $customer)
+                                    <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="mb-3">
@@ -198,8 +208,12 @@
                             <input type="text" class="form-control" id="gramasiInput" name="gramasiInput">
                         </div>
                         <div class="mb-3">
-                            <label for="jumlahInput" class="form-label">Jumlah</label>
-                            <input type="text" class="form-control" id="jumlahInput" name="jumlahInput">
+                            <label for="quantityInput" class="form-label">Jumlah</label>
+                            <input type="text" class="form-control" id="quantityInput" name="quantityInput">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputNopol" class="form-label">Nomor Kendaraan</label>
+                            <input type="text" class="form-control" id="inputNopol" name="inputNopol">
                         </div>
                     </div>
                     <div class="modal-footer">
