@@ -12,7 +12,7 @@ class Transaction extends Model
     protected $fillable = [
         'date',
         'id_customer',
-        'prodcut_name',
+        'product_name',
         'color',
         'quantity',
         'gramasi',
