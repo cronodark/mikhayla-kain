@@ -41,7 +41,7 @@ class TransactionController extends Controller
             'nopol' => $request->inputNopol
         ]);
 
-        return to_route('transaksi.index')->with('success', 'Customer berhasil ditambahkan');
+        return to_route('transaksi.index')->with('success', 'Transaksi berhasil ditambahkan');
 
     }
 
@@ -67,7 +67,7 @@ class TransactionController extends Controller
             'gramasi' => $request->gramasiInput,
             'nopol' => $request->nopolInput
         ]);
-        return to_route('transaksi.index')->with('success', 'Transaksi berhasil diubah');
+        return to_route('transaksi.index')->with('successEdit', 'Transaksi berhasil diubah');
     }
 
     public function delete($id){
@@ -75,10 +75,10 @@ class TransactionController extends Controller
         if($transaction != null){
             $transaction->delete();
         }else{
-            return to_route('transaksi.index')->with('gagal', 'Transaksi gagal dihapus');
+            return to_route('transaksi.index')->with('gagalDelete', 'Transaksi gagal dihapus');
         }
 
-        return to_route('transaksi.index')->with('success', 'Transaksi berhasil dihapus');
+        return to_route('transaksi.index')->with('successDelete', 'Transaksi berhasil dihapus');
 
     }
 

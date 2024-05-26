@@ -41,7 +41,7 @@ class CustomerController extends Controller
             'address' => $request->addressInput
         ]);
 
-        return to_route('customer.index')->with('success', 'Customer berhasil diubah');
+        return to_route('customer.index')->with('successEdit', 'Customer berhasil diubah');
     }
 
     public function delete($id){
@@ -49,10 +49,10 @@ class CustomerController extends Controller
         if($customer != null){
             $customer->delete();
         }else{
-            return to_route('customer.index')->with('gagal', 'Customer gaga dihapus');
+            return to_route('customer.index')->with('gagalDelete', 'Customer gagal dihapus');
         }
 
-        return to_route('customer.index')->with('success', 'Customer berhasil dihapus');
+        return to_route('customer.index')->with('successDelete', 'Customer berhasil dihapus');
     }
 
 }

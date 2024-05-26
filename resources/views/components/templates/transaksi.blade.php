@@ -30,7 +30,7 @@
                             <th class="text-start">Gramasi</th>
                             <th class="text-start">Status</th>
                             <th class="text-start">Plat Nomor</th>
-                            <th class="text-center">Aksi</th>
+                            <th class="text-start">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -68,13 +68,18 @@
                                             data-bs-target="#editTransaksiModal{{ $transaction->id }}"
                                             class="btn pt-0 pb-0 pe-0 ps-0 m-0"><i
                                                 class="bi bi-pencil-square ps-2 me-2"></i></button>
-                                        {{-- haous --}}
-                                        <a href="{{ route('transaksi.delete', $transaction->id) }}"
+                                        {{-- hapus --}}
+                                        <a href="javascript:void(0);" onclick="confirmDelete({{ $transaction->id }})""
                                             class="btn pt-0 pb-0 pe-0 ps-0 m-0"><i
                                                 class="bi bi-trash3-fill ps-2 me-2"></i></a>
+                                        <form id="deleteTransactionForm{{ $transaction->id }}"
+                                            action="{{ route('transaksi.delete', $transaction->id) }}" method="GET"
+                                            style="display: none;">
+                                            @csrf
+                                        </form>
                                         {{-- detail --}}
-                                        <button type="button" class="btn pt-0 pb-0 pe-0 ps-0 m-0"><i
-                                                class="bi bi-eye-fill ps-2 me-2"></i></button>
+                                        {{-- <button type="button" class="btn pt-0 pb-0 pe-0 ps-0 m-0"><i
+                                                class="bi bi-eye-fill ps-2 me-2"></i></button> --}}
                                     </div>
                                 </td>
                             </tr>
@@ -84,7 +89,7 @@
                                 aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <form action="{{ route('transaksi.update', $transaction->id) }}" method="POST">
+                                        <form id="editTransactionForm{{ $transaction->id }}" action="{{ route('transaksi.update', $transaction->id) }}" method="POST">
                                             @csrf
                                             <div class="modal-header">
                                                 <h1 class="modal-title fs-5" id="editTransaksiModalLabel">Edit Data
@@ -103,7 +108,9 @@
                                                     <select class="form-select" name="inputCustomer" id="inputCustomer"
                                                         aria-label="Default select example">
                                                         @foreach ($customers as $customer)
-                                                            <option value="{{ $customer->id }}" {{ $transaction->id_customer == $customer->id ? 'selected' : '' }}>{{ $customer->name }}</option>
+                                                            <option value="{{ $customer->id }}"
+                                                                {{ $transaction->id_customer == $customer->id ? 'selected' : '' }}>
+                                                                {{ $customer->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -132,9 +139,15 @@
                                                     <select class="form-select" name="statusInput" id="statusInput"
                                                         aria-label="Default select example">
                                                         <option selected disabled>==Pilih Status==</option>
-                                                        <option value="1" {{ $transaction->status == 1 ? 'selected' : '' }} >Diproses</option>
-                                                        <option value="2" {{ $transaction->status == 2 ? 'selected' : '' }}>Dikirim</option>
-                                                        <option value="3" {{ $transaction->status == 3 ? 'selected' : '' }}>Selesai</option>
+                                                        <option value="1"
+                                                            {{ $transaction->status == 1 ? 'selected' : '' }}>Diproses
+                                                        </option>
+                                                        <option value="2"
+                                                            {{ $transaction->status == 2 ? 'selected' : '' }}>Dikirim
+                                                        </option>
+                                                        <option value="3"
+                                                            {{ $transaction->status == 3 ? 'selected' : '' }}>Selesai
+                                                        </option>
                                                     </select>
                                                 </div>
                                                 <div class="mb-3">
@@ -153,7 +166,7 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-success">Save</button>
+                                                <button type="button" onclick="confirmSubmission({{ $transaction->id }})" class="btn btn-success">Save</button>
                                             </div>
                                         </form>
                                     </div>
@@ -218,13 +231,49 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success">Save</button>
+                        <button class="btn btn-success">Save</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
     {{-- end modal add --}}
+    @if (session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    title: 'Success!',
+                    text: "{{ session('success') }}",
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+    @endif
+    @if (session('successEdit'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    title: 'Success!',
+                    text: "{{ session('successEdit') }}",
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+    @endif
+    @if (session('successDelete'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    title: 'Success!',
+                    text: "{{ session('successDelete') }}",
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+    @endif
 @endsection
 
 @section('scriptPage')
@@ -235,4 +284,6 @@
     <script src="https://cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.js"></script>
     <script src="https://cdn.datatables.net/responsive/3.0.2/js/responsive.bootstrap5.js"></script>
     <script src="{{ asset('assets/js/table.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('assets/js/transaksi.js') }}"></script>
 @endsection
