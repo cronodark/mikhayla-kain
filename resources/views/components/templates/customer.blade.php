@@ -52,8 +52,8 @@
                                         @csrf
                                     </form>
                                     {{-- detail --}}
-                                    <button type="button" class="btn pt-0 pb-0 pe-0 ps-0 m-0"><i
-                                            class="bi bi-eye-fill ps-2 me-2"></i></button>
+                                    {{-- <button type="button" class="btn pt-0 pb-0 pe-0 ps-0 m-0"><i
+                                            class="bi bi-eye-fill ps-2 me-2"></i></button> --}}
                                     {{-- modal Edit --}}
                                     <div class="modal fade" id="editCustomerModal{{ $customer->id }}"
                                         data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

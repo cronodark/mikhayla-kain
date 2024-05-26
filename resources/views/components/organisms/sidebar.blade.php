@@ -10,7 +10,7 @@
                 </div>
             </li>
             <li class="nav-item w-100">
-                <div class="{{ Route::currentRouteName() == 'transaksi.index' ? 'active' : '' }} font-weight-bold ps-3">
+                <div class="{{ Route::currentRouteName() == 'transaksi.index' ? 'active' : '' }} {{ Route::currentRouteName() == 'transaksi.show' ? 'active' : '' }} font-weight-bold ps-3">
                     <a href="{{ route('transaksi.index') }}" class="nav-link px-0 align-middle">
                         <i class="fs-4 bi-table text-white me-3"></i> <span class="d-none d-sm-inline text-white fs-5">Data Transaksi</span>
                     </a>

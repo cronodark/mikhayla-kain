@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignId('id_customer');
             $table->string('product_name');
             $table->string('color');
-            $table->string('quantity');
             $table->integer('gramasi');
             $table->integer('status')->nullable();
             $table->string('nopol');

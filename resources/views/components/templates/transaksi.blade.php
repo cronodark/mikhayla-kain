@@ -26,11 +26,9 @@
                             <th class="text-start">Nama Customer</th>
                             <th class="text-start">Nama Barang</th>
                             <th class="text-start">Warna</th>
-                            <th class="text-start">Jumlah</th>
                             <th class="text-start">Gramasi</th>
                             <th class="text-start">Status</th>
-                            <th class="text-start">Plat Nomor</th>
-                            <th class="text-start">Aksi</th>
+                            <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,7 +39,6 @@
                                 <td class="text-start">{{ $transaction->customer->name }}</td>
                                 <td class="text-start">{{ $transaction->product_name }}</td>
                                 <td class="text-start">{{ $transaction->color }}</td>
-                                <td class="text-start">{{ $transaction->quantity }}</td>
                                 <td class="text-start">{{ $transaction->gramasi }}</td>
                                 <td class="text-start">
                                     @if ($transaction->status == '3')
@@ -57,9 +54,6 @@
                                             diproses
                                         </div>
                                     @endif
-                                </td>
-                                <td>
-                                    {{ $transaction->nopol }}
                                 </td>
                                 <td>
                                     <div class="d-flex justify-content-center align-items-center">
@@ -78,8 +72,11 @@
                                             @csrf
                                         </form>
                                         {{-- detail --}}
-                                        {{-- <button type="button" class="btn pt-0 pb-0 pe-0 ps-0 m-0"><i
-                                                class="bi bi-eye-fill ps-2 me-2"></i></button> --}}
+                                        <a href="{{ route('transaksi.show', $transaction->id) }}">
+                                            <button type="button" class="btn pt-0 pb-0 pe-0 ps-0 m-0">
+                                                <i class="bi bi-eye-fill ps-2 me-2"></i>
+                                            </button>
+                                        </a>
                                     </div>
                                 </td>
                             </tr>
@@ -89,7 +86,8 @@
                                 aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <form id="editTransactionForm{{ $transaction->id }}" action="{{ route('transaksi.update', $transaction->id) }}" method="POST">
+                                        <form id="editTransactionForm{{ $transaction->id }}"
+                                            action="{{ route('transaksi.update', $transaction->id) }}" method="POST">
                                             @csrf
                                             <div class="modal-header">
                                                 <h1 class="modal-title fs-5" id="editTransaksiModalLabel">Edit Data
@@ -150,23 +148,13 @@
                                                         </option>
                                                     </select>
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="quantityInput" class="form-label">Jumlah</label>
-                                                    <input type="text" class="form-control"
-                                                        value="{{ $transaction->quantity }}" id="quantityInput"
-                                                        name="quantityInput">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="nopolInput" class="form-label">Jumlah</label>
-                                                    <input type="text" class="form-control"
-                                                        value="{{ $transaction->nopol }}" id="nopolInput"
-                                                        name="nopolInput">
-                                                </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
-                                                <button type="button" onclick="confirmSubmission({{ $transaction->id }})" class="btn btn-success">Save</button>
+                                                <button type="button"
+                                                    onclick="confirmSubmission({{ $transaction->id }})"
+                                                    class="btn btn-success">Save</button>
                                             </div>
                                         </form>
                                     </div>

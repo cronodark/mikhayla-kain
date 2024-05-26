@@ -20,3 +20,10 @@
 {
     border-radius: 10px;
 }
+
+.custom-btn{
+    background-color: #2C4D5F !important;
+}
+.custom-btn:hover{
+    background-color: #203744 !important;
+}

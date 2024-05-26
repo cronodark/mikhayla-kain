@@ -14,7 +14,6 @@ class Transaction extends Model
         'id_customer',
         'product_name',
         'color',
-        'quantity',
         'gramasi',
         'status', // 1 = diproses, 2 = dikirim, 3 = selesai
         'nopol'
@@ -22,5 +21,9 @@ class Transaction extends Model
 
     public function customer(){
         return $this->belongsTo(Customer::class, 'id_customer');
+    }
+
+    public function detailtransaction(){
+        return $this->hasMany(DetailTransaction::class);
     }
 }

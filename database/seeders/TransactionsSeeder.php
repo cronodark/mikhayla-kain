@@ -28,7 +28,6 @@ class TransactionsSeeder extends Seeder
                 'id_customer' => $faker->randomElement($customerIds),
                 'product_name' => $faker->randomElement(['Scuba', 'Spandex']),
                 'color' => $faker->randomElement(['Putih', 'Hitam', 'Abu']),
-                'quantity' => $faker->numberBetween(10,2000),
                 'gramasi' => $faker->numberBetween(50,70),
                 'status' => $faker->numberBetween(1,3),
                 'nopol' => $this->generateRandomLicensePlate($faker),
