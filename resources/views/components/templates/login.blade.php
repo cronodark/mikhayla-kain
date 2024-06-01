@@ -14,7 +14,7 @@
 
 <body class="overflow-hidden">
     <section class="bg-login w-100 vh-100 d-flex justify-content-center align-items-center text-white">
-        <div class="row w-25">
+        <div class="row w-50">
             <form action="{{ route('login.auth') }}" method="POST">
                 @csrf
                 <div class="col-12 d-flex align-items-center justify-content-center mb-5">

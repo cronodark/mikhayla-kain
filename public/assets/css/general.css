@@ -37,7 +37,7 @@
 }
 
 .transparent-input {
-    background-color: #2C4D5F !important; /* Makes the background transparent */
+    background-color: transparent !important; /* Makes the background transparent */
     box-shadow: none; /* Removes any shadow effects */
     color: #fff; /* Adjust the text color if necessary */
     border: none;
