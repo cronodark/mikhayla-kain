@@ -1,11 +1,11 @@
 @extends('layouts.index')
 
 @section('content')
-    <div class="ms-4">
+    <div class="ms-4 me-3">
         <h1 class="fs-1 text-gray mt-3">Dashboard</h1>
         <div class="row mt-4 d-sm-flex justify-content-sm-center align-items-sm-center">
             <div class="col-lg-4">
-                <div class="card shadow mb-3 w-75" style="border-radius: 3%">
+                <div class="card shadow mb-3 w-100" style="border-radius: 3%">
                     <div class="card-body">
                         <div class="card-title mb-5">
                             <h5>
@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="card shadow mb-3 w-75" style="border-radius: 3%">
+                <div class="card shadow mb-3 w-100" style="border-radius: 3%">
                     <div class="card-body">
                         <div class="card-title mb-5">
                             <h5>
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="card shadow mb-3 w-75" style="border-radius: 3%">
+                <div class="card shadow mb-3 w-100" style="border-radius: 3%">
                     <div class="card-body">
                         <h5 class="card-title mb-5">
                             <span>

@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-    <div class="ms-3 me-3">
+    <div class="ms-4 me-3">
         <h1 class="fs-1 text-gray mt-3">Customer</h1>
         <div class="mt-4 card shadow mb-3 w-100 p-4">
             <div class="d-flex justify-content-end align-items-end mb-3">
