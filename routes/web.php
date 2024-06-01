@@ -31,3 +31,7 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/login', [AuthController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [AuthController::class, 'authenticate'])->middleware('guest')->name('login.auth');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::fallback(function () {
+    return redirect('/');
+});
