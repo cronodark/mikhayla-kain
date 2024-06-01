@@ -3,7 +3,7 @@
 @section('content')
     <div class="ms-4">
         <h1 class="fs-1 text-gray mt-3">Dashboard</h1>
-        <div class="row mt-4">
+        <div class="row mt-4 d-sm-flex justify-content-sm-center align-items-sm-center">
             <div class="col-lg-4">
                 <div class="card shadow mb-3 w-75" style="border-radius: 3%">
                     <div class="card-body">
@@ -99,7 +99,7 @@
                         </h5>
                         <div class="row mb-3">
                             <div class="col-12">
-                            <h1>{{ $finishedTransactions }}</h1>
+                                <h1>{{ $finishedTransactions }}</h1>
                             </div>
                             <div class="col-12">
                                 <span class="fs-3 text-secondary">Transaksi</span>
@@ -113,4 +113,27 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scriptPage')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('login_success'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "success",
+                title: "Login berhasil"
+            });
+        </script>
+    @endif
 @endsection

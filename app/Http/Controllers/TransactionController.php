@@ -52,7 +52,6 @@ class TransactionController extends Controller
             'nopol' => $request->inputNopol
         ]);
 
-
         for ($i = 0; $i < $request->quantityInput; $i++) {
             DetailTransaction::create([
                 'weight' => 25,
@@ -128,8 +127,6 @@ class TransactionController extends Controller
             return to_route('transaksi.show', $getTransaction)->with('gagalDelete', 'Item gagal dihapus');
         }
         return to_route('transaksi.show', $getTransaction)->with('successDelete', 'Item berhasil dihapus');
-
     }
-
 
 }

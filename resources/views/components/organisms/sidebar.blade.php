@@ -5,22 +5,38 @@
             <li class="nav-item w-100">
                 <div class="{{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }} font-weight-bold ps-3">
                     <a href="{{ route('dashboard') }}" class="nav-link align-middle px-0">
-                        <i class="fs-4 bi-house text-white me-3"></i> <span class="d-none d-sm-inline text-white fs-5 ">Home</span>
+                        <i class="fs-4 bi-house text-white me-3"></i> <span
+                            class="d-none d-sm-inline text-white fs-5 ">Home</span>
                     </a>
                 </div>
             </li>
             <li class="nav-item w-100">
-                <div class="{{ Route::currentRouteName() == 'transaksi.index' ? 'active' : '' }} {{ Route::currentRouteName() == 'transaksi.show' ? 'active' : '' }} font-weight-bold ps-3">
+                <div
+                    class="{{ Route::currentRouteName() == 'transaksi.index' ? 'active' : '' }} {{ Route::currentRouteName() == 'transaksi.show' ? 'active' : '' }} font-weight-bold ps-3">
                     <a href="{{ route('transaksi.index') }}" class="nav-link px-0 align-middle">
-                        <i class="fs-4 bi-table text-white me-3"></i> <span class="d-none d-sm-inline text-white fs-5">Data Transaksi</span>
+                        <i class="fs-4 bi-table text-white me-3"></i> <span
+                            class="d-none d-sm-inline text-white fs-5">Data Transaksi</span>
                     </a>
                 </div>
             </li>
             <li class="nav-item w-100">
-                <div class="{{ Route::currentRouteName() == 'customer.index' ? 'active' : '' }} font-weight-bold ps-3">
+                <div
+                    class="{{ Route::currentRouteName() == 'customer.index' ? 'active' : '' }} font-weight-bold ps-3 mb-5">
                     <a href="{{ route('customer.index') }}" class="nav-link px-0 align-middle">
-                        <i class="fs-4 bi bi-people-fill text-white me-3"></i> <span class="d-none d-sm-inline text-white fs-5">Data Customer</span>
+                        <i class="fs-4 bi bi-people-fill text-white me-3"></i> <span
+                            class="d-none d-sm-inline text-white fs-5">Data Customer</span>
                     </a>
+                </div>
+            </li>
+            <li class="nav-item w-100">
+                <div class="font-weight-bold ps-3 mb-5">
+                    <form action="{{ route('logout') }}" class="nav-link px-0 align-middle " method="post">
+                        @csrf
+                        <button href="{{ route('customer.index') }}" class="nav-link px-0 align-middle">
+                            <i class="bi bi-box-arrow-left fs-4 me-3 text-danger"></i> <span
+                                class="d-none d-sm-inline text-danger hover fs-5 ">Logout</span>
+                        </button>
+                    </form>
                 </div>
             </li>
         </ul>

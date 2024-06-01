@@ -13,10 +13,10 @@
 <body>
     @include('components.organisms.navbar')
 
-    <div class="container-fluid">
+    <div class="container-fluid overflow-hidden">
         <div class="row flex-nowrap">
             @include('components.organisms.sidebar')
-            <div class="col py-3 content-bg">
+            <div class="col py-3 content-bg ">
                 @yield('content')
             </div>
         </div>

@@ -10,7 +10,7 @@
 @section('content')
     <div class="ms-3 me-3">
         <h1 class="fs-1 text-gray mt-3">Customer</h1>
-        <div class="mt-4 card shadow mb-3 w-100 data-table-containe p-4">
+        <div class="mt-4 card shadow mb-3 w-100 p-4">
             <div class="d-flex justify-content-end align-items-end mb-3">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCustomerModal">
                     <i class="bi bi-plus-circle me-2"></i>Tambah Customer

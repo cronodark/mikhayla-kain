@@ -27,3 +27,18 @@
 .custom-btn:hover{
     background-color: #203744 !important;
 }
+
+.bg-login{
+    background-color: #2C4D5F;
+    background-image: url('/assets/images/BG.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.transparent-input {
+    background-color: #2C4D5F !important; /* Makes the background transparent */
+    box-shadow: none; /* Removes any shadow effects */
+    color: #fff; /* Adjust the text color if necessary */
+    border: none;
+}
