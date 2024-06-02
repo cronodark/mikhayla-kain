@@ -8,11 +8,11 @@
 @endsection
 
 @section('content')
-    <div class="ms-4 me-3">
+    <div class="ms-4 me-xxl-3 me-5">
         <h1 class="fs-1 text-gray mt-3">Detail Transaksi</h1>
         <div class="mt-4 card shadow mb-3 w-100 data-table-containe p-4">
             <div class="d-flex justify-content-between mb-3">
-                <div>
+                <div class="me-md-2 me-2">
                     <a href="{{ route('transaksi.index') }}"><button class="btn text-white custom-btn"><i class="bi bi-backspace"></i> Kembali</button></a>
                 </div>
                 <div>
