@@ -80,87 +80,6 @@
                                     </div>
                                 </td>
                             </tr>
-                            {{-- modal Edit --}}
-                            <div class="modal fade" id="editTransaksiModal{{ $transaction->id }}" data-bs-backdrop="static"
-                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="editTransaksiModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <form id="editTransactionForm{{ $transaction->id }}"
-                                            action="{{ route('transaksi.update', $transaction->id) }}" method="POST">
-                                            @csrf
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="editTransaksiModalLabel">Edit Data
-                                                    Pemesanan</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="mb-3">
-                                                    <label for="dateInput" class="form-label">Tanggal</label>
-                                                    <input type="date" class="form-control"
-                                                        value="{{ $transaction->date }}" id="dateInput" name="dateInput">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="inputCustomer" class="form-label">Customer</label>
-                                                    <select class="form-select" name="inputCustomer" id="inputCustomer"
-                                                        aria-label="Default select example">
-                                                        @foreach ($customers as $customer)
-                                                            <option value="{{ $customer->id }}"
-                                                                {{ $transaction->id_customer == $customer->id ? 'selected' : '' }}>
-                                                                {{ $customer->name }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3 row">
-                                                    <div class="col-lg-6">
-                                                        <label for="productNameInput" class="form-label">Nama Barang</label>
-                                                        <input type="text" value="{{ $transaction->product_name }}"
-                                                            class="form-control" id="productNameInput"
-                                                            name="productNameInput">
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <label for="colorInput" class="form-label">Warna</label>
-                                                        <input type="text" class="form-control"
-                                                            value="{{ $transaction->color }}" id="colorInput"
-                                                            name="colorInput">
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="gramasiInput" class="form-label">Gramasi</label>
-                                                    <input type="text" class="form-control"
-                                                        value="{{ $transaction->gramasi }}" id="gramasiInput"
-                                                        name="gramasiInput">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="statusInput" class="form-label">Status</label>
-                                                    <select class="form-select" name="statusInput" id="statusInput"
-                                                        aria-label="Default select example">
-                                                        <option selected disabled>==Pilih Status==</option>
-                                                        <option value="1"
-                                                            {{ $transaction->status == 1 ? 'selected' : '' }}>Diproses
-                                                        </option>
-                                                        <option value="2"
-                                                            {{ $transaction->status == 2 ? 'selected' : '' }}>Dikirim
-                                                        </option>
-                                                        <option value="3"
-                                                            {{ $transaction->status == 3 ? 'selected' : '' }}>Selesai
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-                                                <button type="button"
-                                                    onclick="confirmSubmission({{ $transaction->id }})"
-                                                    class="btn btn-success">Save</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            {{-- end modal edit --}}
                         @endforeach
                     </tbody>
                 </table>
@@ -262,6 +181,89 @@
             });
         </script>
     @endif
+    @foreach ($transactions as $transaction)
+        {{-- modal Edit --}}
+        <div class="modal fade" id="editTransaksiModal{{ $transaction->id }}" data-bs-backdrop="static"
+            data-bs-keyboard="false" tabindex="-1" aria-labelledby="editTransaksiModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form id="editTransactionForm{{ $transaction->id }}"
+                        action="{{ route('transaksi.update', $transaction->id) }}" method="POST">
+                        @csrf
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="editTransaksiModalLabel">Edit Data
+                                Pemesanan</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="dateInput" class="form-label">Tanggal</label>
+                                <input type="date" class="form-control"
+                                    value="{{ $transaction->date }}" id="dateInput" name="dateInput">
+                            </div>
+                            <div class="mb-3">
+                                <label for="inputCustomer" class="form-label">Customer</label>
+                                <select class="form-select" name="inputCustomer" id="inputCustomer"
+                                    aria-label="Default select example">
+                                    @foreach ($customers as $customer)
+                                        <option value="{{ $customer->id }}"
+                                            {{ $transaction->id_customer == $customer->id ? 'selected' : '' }}>
+                                            {{ $customer->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3 row">
+                                <div class="col-lg-6">
+                                    <label for="productNameInput" class="form-label">Nama Barang</label>
+                                    <input type="text" value="{{ $transaction->product_name }}"
+                                        class="form-control" id="productNameInput"
+                                        name="productNameInput">
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="colorInput" class="form-label">Warna</label>
+                                    <input type="text" class="form-control"
+                                        value="{{ $transaction->color }}" id="colorInput"
+                                        name="colorInput">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="gramasiInput" class="form-label">Gramasi</label>
+                                <input type="text" class="form-control"
+                                    value="{{ $transaction->gramasi }}" id="gramasiInput"
+                                    name="gramasiInput">
+                            </div>
+                            <div class="mb-3">
+                                <label for="statusInput" class="form-label">Status</label>
+                                <select class="form-select" name="statusInput" id="statusInput"
+                                    aria-label="Default select example">
+                                    <option selected disabled>==Pilih Status==</option>
+                                    <option value="1"
+                                        {{ $transaction->status == 1 ? 'selected' : '' }}>Diproses
+                                    </option>
+                                    <option value="2"
+                                        {{ $transaction->status == 2 ? 'selected' : '' }}>Dikirim
+                                    </option>
+                                    <option value="3"
+                                        {{ $transaction->status == 3 ? 'selected' : '' }}>Selesai
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                data-bs-dismiss="modal">Close</button>
+                            <button type="button"
+                                onclick="confirmSubmission({{ $transaction->id }})"
+                                class="btn btn-success">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{-- end modal edit --}}
+    @endforeach
 @endsection
 
 @section('scriptPage')
