@@ -13,12 +13,12 @@
         <div class="mt-4 card shadow mb-3 w-100 data-table-containe p-4">
             <div class="d-flex justify-content-between mb-3">
                 <div class="me-md-2 me-2">
-                    <a href="{{ route('transaksi.index') }}"><button class="btn text-white custom-btn"><i class="bi bi-backspace"></i> Kembali</button></a>
+                    <a href="{{ route('transaksi.index') }}"><button class="btn text-white custom-btn d-flex"><i class="bi bi-backspace"></i><span class="ms-2 d-none d-xxl-block">Kembali</span></button></a>
                 </div>
                 <div>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    <button type="button" class="btn btn-primary d-flex" data-bs-toggle="modal"
                         data-bs-target="#addDetailTransaksiModal">
-                        <i class="bi bi-plus-circle me-2"></i>Tambah Item
+                        <i class="bi bi-plus-circle"></i><span class="ms-2 d-none d-xxl-block">Tambah Item</span>
                     </button>
                 </div>
 
